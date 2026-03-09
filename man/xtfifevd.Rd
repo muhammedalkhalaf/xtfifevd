@@ -101,11 +101,11 @@ factors of 2-5x or more.
 }
 \section{Functions}{
 \itemize{
-\item \code{fevd()}: FEVD estimation (3-stage, Plümper-Troeger)
+\item \code{fevd}: FEVD estimation (3-stage, Plümper-Troeger)
 
-\item \code{fef()}: FEF estimation (2-stage, Pesaran-Zhou)
+\item \code{fef}: FEF estimation (2-stage, Pesaran-Zhou)
 
-\item \code{fef_iv()}: FEF-IV estimation with instruments
+\item \code{fef_iv}: FEF-IV estimation with instruments
 
 }}
 \examples{
@@ -145,5 +145,5 @@ static panel data models. \emph{Econometric Reviews}, 37(10), 1137-1171.
 \doi{10.1080/07474938.2016.1222225}
 }
 \seealso{
-\code{\link[=fevd]{fevd()}}, \code{\link[=fef]{fef()}}, \code{\link[=fef_iv]{fef_iv()}}, \code{\link[=bw_ratio]{bw_ratio()}}
+\code{\link[=fevd]{fevd}}, \code{\link[=fef]{fef}}, \code{\link[=fef_iv]{fef_iv}}, \code{\link[=bw_ratio]{bw_ratio}}
 }

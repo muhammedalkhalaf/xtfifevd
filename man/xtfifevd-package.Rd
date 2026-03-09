@@ -13,7 +13,6 @@ these coefficients:
 }
 \section{Methods}{
 
-
 \describe{
 \item{FEVD}{Fixed Effects Vector Decomposition (Plümper & Troeger, 2007).
 A three-stage estimator that decomposes the unit effects into explained
@@ -51,7 +50,7 @@ to the Problem of Time-Invariant Variables in Fixed Effects Models?
 \doi{10.1093/pan/mpq034}
 }
 \author{
-\strong{Maintainer}: Merwan Roudane \email{merwanroudane920@gmail.com}
+\strong{Maintainer}:  
 
 }
 \keyword{internal}

@@ -1,7 +1,6 @@
 # xtfifevd
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/merwanroudane/xtfifevd/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/merwanroudane/xtfifevd/actions/workflows/R-CMD-check.yaml)
 [![CRAN status](https://www.r-pkg.org/badges/version/xtfifevd)](https://CRAN.R-project.org/package=xtfifevd)
 <!-- badges: end -->
 
@@ -29,7 +28,6 @@ install.packages("xtfifevd")
 
 # Or install development version from GitHub
 # install.packages("remotes")
-remotes::install_github("merwanroudane/xtfifevd")
 ```
 
 ## Usage
