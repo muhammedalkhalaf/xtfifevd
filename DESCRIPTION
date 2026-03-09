@@ -1,0 +1,37 @@
+Package: xtfifevd
+Type: Package
+Title: Panel Fixed Effects Filtered and Variance Decomposition Estimation
+Version: 1.0.0
+Authors@R: c(
+    person("Muhammad", "Alkhalaf", 
+           email = "muhammedalkhalaf@gmail.com",
+           role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0009-0002-2677-9246")),
+    person("Merwan", "Roudane",
+           role = "ctb",
+           comment = "Original Stata implementation"))
+Description: Implements fixed effects estimators for time-invariant variables
+    in panel data models. Provides three estimation methods: FEVD (Fixed Effects
+    Vector Decomposition) from Plumper and Troeger (2007) 
+    <doi:10.1093/pan/mpm002>, and FEF (Fixed Effects Filtered) and FEF-IV
+    (instrumental variables variant) from Pesaran and Zhou (2018)
+    <doi:10.1080/07474938.2016.1222225>. All methods use the correct
+    Pesaran-Zhou variance estimators that account for generated regressor
+    uncertainty, avoiding the size distortions documented in the literature.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: 
+    R (>= 4.1.0)
+Imports:
+    stats,
+    MASS
+Suggests:
+    plm,
+    lmtest,
+    sandwich,
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
