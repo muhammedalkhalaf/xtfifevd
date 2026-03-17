@@ -1,0 +1,25 @@
+Package: xtfifevd
+Type: Package
+Title: Fixed Effects Filtered and Vector Decomposition for Panel Data
+Version: 1.0.0
+Authors@R: person("Muhammad", "Alkhalaf", email = "muhammedalkhalaf@gmail.com",
+    role = c("aut", "cre", "cph"),
+    comment = c(ORCID = "0009-0002-2677-9246"))
+Description: Implements the Fixed Effects Vector Decomposition (FEVD) estimator
+    of Plumper and Troeger (2007) <doi:10.1093/pan/mpm002> and the Fixed Effects
+    Filtered (FEF) and FEF-IV estimators of Pesaran and Zhou (2016)
+    <doi:10.1080/07474938.2015.1032164>. Provides consistent standard errors
+    for time-invariant regressors in panel data models using the corrected
+    variance estimator of Pesaran and Zhou (2016, Econometric Reviews). Supports
+    FEVD (three-stage), FEF (two-stage), and FEF-IV (instrumental variables)
+    methods with optional comparison of corrected versus raw standard errors.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Depends: R (>= 3.5.0)
+Imports: stats
+Suggests: testthat (>= 3.0.0)
+Config/testthat/edition: 3
+URL: https://github.com/muhammedalkhalaf/xtfifevd
+BugReports: https://github.com/muhammedalkhalaf/xtfifevd/issues
