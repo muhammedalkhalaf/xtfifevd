@@ -12,3 +12,6 @@
 ^\.gitignore$
 
 ^data-raw$
+^paper\.tex$
+^paper\.md$
+^paper\.bib$
