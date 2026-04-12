@@ -101,37 +101,38 @@ bw_ratio <- function(data, variables, id) {
     ))
   }
   
-  # Print nicely
-  cat("\n")
-  cat("Between/Within Variance Ratios\n")
-  cat(rep("-", 60), sep = "")
-  cat("\n")
-  cat(sprintf("%-15s %12s %12s %12s\n",
-              "Variable", "Between SD", "Within SD", "B/W Ratio"))
-  cat(rep("-", 60), sep = "")
-  cat("\n")
-  
+  # Print nicely via message() so output can be suppressed
+  lines <- c(
+    "",
+    "Between/Within Variance Ratios",
+    paste(rep("-", 60), collapse = ""),
+    sprintf("%-15s %12s %12s %12s",
+            "Variable", "Between SD", "Within SD", "B/W Ratio"),
+    paste(rep("-", 60), collapse = "")
+  )
   for (i in seq_len(nrow(results))) {
     if (is.finite(results$bw_ratio[i])) {
-      cat(sprintf("%-15s %12.4f %12.4f %12.2f\n",
+      lines <- c(lines, sprintf("%-15s %12.4f %12.4f %12.2f",
                   results$variable[i],
                   results$sd_between[i],
                   results$sd_within[i],
                   results$bw_ratio[i]))
     } else {
-      cat(sprintf("%-15s %12.4f %12.4f %12s\n",
+      lines <- c(lines, sprintf("%-15s %12.4f %12.4f %12s",
                   results$variable[i],
                   results$sd_between[i],
                   results$sd_within[i],
                   "Inf"))
     }
   }
-  
-  cat(rep("-", 60), sep = "")
-  cat("\n")
-  cat("Note: B/W > 1.7 suggests FEVD/FEF may improve on FE\n")
-  cat("      (threshold depends on corr(z,u); see Plumper & Troeger 2007)\n")
-  cat("\n")
+  lines <- c(
+    lines,
+    paste(rep("-", 60), collapse = ""),
+    "Note: B/W > 1.7 suggests FEVD/FEF may improve on FE",
+    "      (threshold depends on corr(z,u); see Plumper & Troeger 2007)",
+    ""
+  )
+  message(paste(lines, collapse = "\n"))
   
   invisible(results)
 }

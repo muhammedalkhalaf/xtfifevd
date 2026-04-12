@@ -146,11 +146,11 @@ FEVD/FEF methods with **Pesaran-Zhou corrected standard errors** provide:
 - Plümper, T., & Troeger, V. E. (2007). Efficient Estimation of Time-Invariant
   and Rarely Changing Variables in Finite Sample Panel Analyses with Unit Fixed
   Effects. *Political Analysis*, 15(2), 124-139.
-  [doi:10.1017/S1047198700006362](https://doi.org/10.1017/S1047198700006362)
+  [doi:10.1093/pan/mpm002](https://doi.org/10.1093/pan/mpm002)
 
 - Pesaran, M. H., & Zhou, Q. (2018). Estimation of time-invariant effects in
   static panel data models. *Econometric Reviews*, 37(10), 1137-1171.
-  [doi:10.1080/07474938.2016.1243552](https://doi.org/10.1080/07474938.2016.1243552)
+  [doi:10.1080/07474938.2016.1222225](https://doi.org/10.1080/07474938.2016.1222225)
 
 - Greene, W. H. (2011). Fixed Effects Vector Decomposition: A Magical Solution
   to the Problem of Time-Invariant Variables in Fixed Effects Models?
