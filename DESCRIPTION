@@ -1,7 +1,7 @@
 Package: xtfifevd
 Type: Package
 Title: Panel Fixed Effects Filtered and Variance Decomposition Estimation
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(
     person("Muhammad", "Alkhalaf", 
            email = "muhammedalkhalaf@gmail.com",
