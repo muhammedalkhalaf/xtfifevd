@@ -11,15 +11,22 @@ export(fef)
 export(fef_iv)
 export(fevd)
 export(xtfifevd)
-importFrom(stats,as.formula)
-importFrom(stats,coef)
-importFrom(stats,fitted)
-importFrom(stats,lm.fit)
-importFrom(stats,na.omit)
-importFrom(stats,pnorm)
-importFrom(stats,printCoefmat)
-importFrom(stats,qnorm)
-importFrom(stats,residuals)
-importFrom(stats,sd)
-importFrom(stats,var)
-importFrom(stats,vcov)
+importFrom(stats,
+  as.formula,
+  coef,
+  complete.cases,
+  fitted,
+  lm.fit,
+  model.frame,
+  model.matrix,
+  na.omit,
+  pnorm,
+  printCoefmat,
+  qnorm,
+  residuals,
+  sd,
+  terms,
+  var,
+  vcov
+)
+importFrom(utils,packageVersion)

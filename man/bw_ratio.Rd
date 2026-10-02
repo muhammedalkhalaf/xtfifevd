@@ -2,7 +2,7 @@
 % Please edit documentation in R/diagnostics.R
 \name{bw_ratio}
 \alias{bw_ratio}
-\title{Between/Within Variance Ratio for Time-Invariant Variables}
+\title{Between/Within SD Ratio for Time-Invariant Variables}
 \usage{
 bw_ratio(data, variables, id)
 }
@@ -30,13 +30,34 @@ whether FEVD/FEF methods may improve upon standard FE estimation.
 \details{
 For truly time-invariant variables, the within-panel SD should be zero
 (or near-zero due to numerical precision), giving an infinite ratio.
+Plumper and Troeger (2007, p. 134) define the b/w ratio as the between SD
+of a variable divided by its within SD, which is what this function
+reports.
 
-According to Plümper and Troeger (2007), FEVD/FEF methods tend to improve
-upon standard FE when:
-\itemize{
-\item The between/within ratio exceeds approximately 1.7
-\item The correlation between z and the unobserved unit effect is not too high
-}
+Plumper and Troeger (2007, Section 6) compare the root mean squared error
+of the FE and FEVD estimators of a rarely changing variable in a Monte
+Carlo design with N = 30 units and T = 20 periods (their footnote 13
+reports that the findings for rarely changing variables were confirmed
+for N in 15 to 100 and T in 20 to 100). The b/w ratio above
+which FEVD has the lower RMSE depends on the (unobservable) correlation
+between the rarely changing variable and the unit effects: about 0.2 when
+the correlation is 0, about 1.7 at a correlation of 0.3, about 2.8 at 0.5
+and close to 3.8 at 0.8 (their Fig. 4, pp. 135-136). The often quoted
+threshold of 1.7 is therefore a result for corr(z, u) = 0.3 from their
+Fig. 4 (N = 30, T = 20), and Plumper and Troeger themselves write that
+they "cannot offer a simple rule of thumb", adding (p. 136) that "the
+odds are that at a b/w ratio of at least 2.8, the variable is better
+included into the stage 2 estimation". This function prints these
+thresholds for orientation only.
+
+Two caveats from Plumper and Troeger apply. First, the FEVD (and FEF)
+coefficient on a time-invariant or rarely changing variable is biased
+whenever that variable is correlated with the unobserved unit effects
+(p. 129); the bias is the usual omitted variable bias and does not vanish
+with a high b/w ratio. Second, this correlation cannot be observed or
+tested, because the unit effects are unobservable (p. 135); the trade-off
+between the bias of FEVD and the inefficiency of FE for rarely changing
+variables therefore rests on an untestable assumption.
 }
 \examples{
 # Create example data
@@ -55,7 +76,7 @@ bw_ratio(data, c("z_inv", "z_slow", "x"), id = "id")
 
 }
 \references{
-Plumper, T., & Troeger, V. E. (2007). Efficient Estimation of Time-Invariant
+Plumper, T. and Troeger, V. E. (2007). Efficient Estimation of Time-Invariant
 and Rarely Changing Variables in Finite Sample Panel Analyses with Unit Fixed
 Effects. \emph{Political Analysis}, 15(2), 124-139.
 \doi{10.1093/pan/mpm002}

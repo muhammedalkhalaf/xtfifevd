@@ -1,4 +1,6 @@
-# xtfifevd 1.1.0
+## xtfifevd 1.1.0
+
+This release corrects the computations below; the version on CRAN is 1.0.2.
 
 * Formula handling: the right-hand side is now split at the top-level `|`
   and each part is built with `model.frame()` and `model.matrix()`, so
@@ -62,31 +64,10 @@
   `plm::vcovHC(method = "arellano", type = "HC0")` (skipped when `plm` is not
   available), and `delta = 1`.
 
-# xtfifevd 1.0.2
+## Test environments
 
-* Resubmission to CRAN.
-* Removed UTF-8 BOM (Byte Order Mark) from `inst/CITATION`. The BOM was
-  causing the CRAN incoming auto-check to fail with:
-  `Invalid citation information in 'inst/CITATION': 1:1: unexpected input`.
-* Synchronised the version string in `inst/CITATION` with `DESCRIPTION`.
-* No code or behavior changes.
+* Ubuntu 24.04, R 4.3.3 and R-devel, R CMD check --as-cran
 
-# xtfifevd 1.0.1
+## R CMD check results
 
-* Documentation and metadata corrections (DOI fixes, `cat()` -> `message()`).
-
-# xtfifevd 1.0.0
-
-* Initial CRAN release.
-
-* Implements three estimation methods for time-invariant variables in panel FE models:
-  - `fevd()`: Fixed Effects Vector Decomposition (Plümper & Troeger, 2007)
-  - `fef()`: Fixed Effects Filtered (Pesaran and Zhou, 2018)
-  - `fef_iv()`: FEF with instrumental variables (Pesaran and Zhou, 2018)
-
-* Uses correct Pesaran-Zhou (2018) variance estimators that account for generated
-  regressor uncertainty.
-
-* Provides `bw_ratio()` diagnostic for between/within variance analysis.
-
-* Full S3 methods: `print()`, `summary()`, `coef()`, `vcov()`, `confint()`.
+0 errors | 0 warnings | 0 notes

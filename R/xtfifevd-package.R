@@ -11,32 +11,47 @@
 #' @section Methods:
 #'
 #' \describe{
-#'   \item{FEVD}{Fixed Effects Vector Decomposition (Plümper & Troeger, 2007).
-#'     A three-stage estimator that decomposes the unit effects into explained
-#'     (by time-invariant variables) and unexplained components.}
-#'   \item{FEF}{Fixed Effects Filtered (Pesaran & Zhou, 2016). A two-stage
+#'   \item{FEVD}{Fixed Effects Vector Decomposition (Plumper and Troeger, 2007).
+#'     A three-stage estimator: within FE regression, unit-level regression
+#'     of the time-averaged FE residuals on the time-invariant variables
+#'     (with an intercept, which makes the stage 3 estimates identical to FEF
+#'     and the coefficient on the unexplained unit effect equal to 1), and
+#'     pooled OLS of y on x, z and the unexplained unit effect. Pesaran and
+#'     Zhou (2018, Proposition 3) state this identity for balanced panels;
+#'     it also holds in unbalanced panels because the within residuals sum
+#'     to zero within each unit (the package's argument, see [xtfifevd()]).
+#'     Inference uses the Pesaran and Zhou (2018) standard errors, not the
+#'     naive stage 3 ones, which are too small for the time-invariant
+#'     coefficients (Breusch, Ward, Nguyen and Kompas 2010; Greene 2011).}
+#'   \item{FEF}{Fixed Effects Filtered (Pesaran and Zhou, 2018). A two-stage
 #'     estimator that regresses time-averaged FE residuals on time-invariant
 #'     variables.}
 #'   \item{FEF-IV}{Fixed Effects Filtered with Instrumental Variables
-#'     (Pesaran & Zhou, 2016). Uses external instruments when time-invariant
+#'     (Pesaran and Zhou, 2018). Uses external instruments when time-invariant
 #'     variables are endogenous.}
 #' }
 #'
 #' @section Variance Estimation:
-#' All methods use the Pesaran-Zhou (2016) variance estimator (Equation 17 for
-#' FEF/FEVD, Equation 51 for FEF-IV). These correct variance estimators account
-#' for the generated regressor problem and avoid the severe size distortions
-#' documented for naive pooled OLS standard errors.
+#' All methods use the Pesaran and Zhou (2018) variance estimator (Equation 17
+#' for FEF/FEVD, Equation 51 for FEF-IV) for the time-invariant coefficients,
+#' the Arellano-type panel-robust matrix of their Equation 18 for the
+#' time-varying coefficients (by default), and the full covariance between
+#' the two sets of coefficients and the intercept derived from their Equation
+#' (A.11). See [xtfifevd()] for details.
 #'
 #' @references
-#' Plumper, T., & Troeger, V. E. (2007). Efficient Estimation of Time-Invariant
+#' Plumper, T. and Troeger, V. E. (2007). Efficient Estimation of Time-Invariant
 #' and Rarely Changing Variables in Finite Sample Panel Analyses with Unit Fixed
 #' Effects. \emph{Political Analysis}, 15(2), 124-139.
 #' \doi{10.1093/pan/mpm002}
 #'
-#' Pesaran, M. H., & Zhou, Q. (2018). Estimation of time-invariant effects in
+#' Pesaran, M. H. and Zhou, Q. (2018). Estimation of time-invariant effects in
 #' static panel data models. \emph{Econometric Reviews}, 37(10), 1137-1171.
 #' \doi{10.1080/07474938.2016.1222225}
+#'
+#' Breusch, T., Ward, M. B., Nguyen, H. and Kompas, T. (2010). On the
+#' fixed-effects vector decomposition. MPRA Paper No. 21452.
+#' \url{https://mpra.ub.uni-muenchen.de/21452/}
 #'
 #' Greene, W. H. (2011). Fixed Effects Vector Decomposition: A Magical Solution
 #' to the Problem of Time-Invariant Variables in Fixed Effects Models?

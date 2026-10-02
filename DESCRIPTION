@@ -1,7 +1,8 @@
 Package: xtfifevd
 Type: Package
 Title: Panel Fixed Effects Filtered and Variance Decomposition Estimation
-Version: 1.0.2
+Version: 1.1.0
+Date: 2026-09-30
 Authors@R: c(
     person("Muhammad", "Alkhalaf", 
            email = "muhammedalkhalaf@gmail.com",
@@ -12,9 +13,10 @@ Description: Implements fixed effects estimators for time-invariant variables
     Vector Decomposition) from Plumper and Troeger (2007) 
     <doi:10.1093/pan/mpm002>, and FEF (Fixed Effects Filtered) and FEF-IV
     (instrumental variables variant) from Pesaran and Zhou (2018)
-    <doi:10.1080/07474938.2016.1222225>. All methods use the correct
-    Pesaran-Zhou variance estimators that account for generated regressor
-    uncertainty, avoiding the size distortions documented in the literature.
+    <doi:10.1080/07474938.2016.1222225>. All methods use the Pesaran and Zhou
+    variance estimators, which account for generated regressor uncertainty,
+    and report the full covariance matrix of the time-varying,
+    time-invariant and intercept coefficients.
 License: GPL-3
 URL: https://github.com/muhammedalkhalaf/xtfifevd
 BugReports: https://github.com/muhammedalkhalaf/xtfifevd/issues
@@ -25,12 +27,8 @@ Depends:
     R (>= 4.1.0)
 Imports:
     stats,
-    MASS
+    utils
 Suggests:
     plm,
-    lmtest,
-    sandwich,
-    testthat (>= 3.0.0),
-    knitr,
-    rmarkdown
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3

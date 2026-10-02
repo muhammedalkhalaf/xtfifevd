@@ -3,6 +3,7 @@
 #' @name xtfifevd-methods
 #' @keywords internal
 #' @importFrom stats coef vcov pnorm qnorm printCoefmat
+#' @importFrom utils packageVersion
 NULL
 
 
@@ -23,6 +24,10 @@ print.xtfifevd <- function(x, digits = max(3L, getOption("digits") - 3L), ...) {
   
   cat("Coefficients:\n")
   print(round(x$coefficients, digits))
+  if (!is.null(x$delta)) {
+    cat(sprintf("Stage 3 coefficient on h_i (delta): %s\n",
+                format(round(x$delta, digits))))
+  }
   cat("\n")
   
   invisible(x)
@@ -60,6 +65,9 @@ summary.xtfifevd <- function(object, ...) {
     T_bar = object$T_bar,
     sigma2_e = object$sigma2_e,
     sigma2_u = object$sigma2_u,
+    vcov_beta = object$vcov_beta,
+    delta = object$delta,
+    balanced = object$balanced,
     y_name = object$y_name,
     x_names = object$x_names,
     z_names = object$z_names,
@@ -80,13 +88,15 @@ print.summary.xtfifevd <- function(x, digits = max(3L, getOption("digits") - 3L)
   cat("\n")
   cat(rep("=", 70), sep = "")
   cat("\n")
-  cat(x$method, "Estimation Results", "                      xtfifevd 1.0.0\n")
+  ver <- tryCatch(as.character(utils::packageVersion("xtfifevd")),
+                  error = function(e) "")
+  cat(sprintf("%-50s xtfifevd %s\n", paste(x$method, "Estimation Results"), ver))
   cat(rep("=", 70), sep = "")
   cat("\n")
   
   cat("Dep. variable:  ", x$y_name, "\n")
   cat("Method:         ", x$method, "\n")
-  cat("Variance:        Pesaran-Zhou (2016)\n")
+  cat("Variance:        Pesaran and Zhou (2018), beta vcov:", x$vcov_beta, "\n")
   cat(sprintf("Observations:    %-10d Groups:     %d\n", x$N, x$N_g))
   cat(sprintf("T (average):     %-10.2f\n", x$T_bar))
   cat(rep("-", 70), sep = "")
@@ -101,8 +111,14 @@ print.summary.xtfifevd <- function(x, digits = max(3L, getOption("digits") - 3L)
   cat("\n")
   cat("Time-varying (FE):     ", paste(x$x_names, collapse = ", "), "\n")
   cat("Time-invariant:        ", paste(x$z_names, collapse = ", "), "\n")
-  cat(sprintf("sigma_e: %.4f    sigma_u: %.4f\n",
+  cat(sprintf("sigma_e: %.4f    sigma_u (unexplained unit effect): %.4f\n",
               sqrt(x$sigma2_e), sqrt(x$sigma2_u)))
+  if (!is.null(x$delta)) {
+    cat(sprintf("FEVD stage 3 coefficient on h_i (delta): %.6f", x$delta))
+    cat("  [equals 1 by construction]\n")
+    cat("Naive stage 3 OLS SEs are too small for the time-invariant\n",
+        "coefficients; see ?xtfifevd.\n", sep = "")
+  }
   cat(rep("=", 70), sep = "")
   cat("\n")
   
